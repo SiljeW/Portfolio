@@ -2,23 +2,25 @@
 
 ![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
 
-A simple overview of the use/purpose of the project.
 
 ## Description
 
 This portfolio is a representation of the project assignments given in my Frontend Development studies.
+The studies have a broad focus and include all important aspects within web development, such as project planning and management, accessible UX/UI design and neat coding.
 
-This entails the following:
+This portfolio entails the following assignment titles:
 
 - Cross-Course project (Design, HTML & CSS)
 - Semester Project 1
 - Project Exam 1
 
+
 ## Built With
 
-
-- [React.js](https://reactjs.org/)
-- [Bootstrap](https://getbootstrap.com)
+In [Visual Studio Code](https://code.visualstudio.com/)
+- [HTML]
+- [CSS]
+- [JS]
 
 ## Getting Started
 
@@ -66,3 +68,6 @@ Other code snippets that have been helpful:
 [Geeks for Geeks](https://www.geeksforgeeks.org/)
 [CodingNepal](https://www.codingnepalweb.com/)
 
+Images:
+[Unsplash](https://unsplash.com/)
+[Picsum](https://picsum.photos/images#7)
