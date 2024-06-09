@@ -1,6 +1,6 @@
 # Portfolio
 
-![image](http://127.0.0.1:5500/images/logo1.jpg)
+![image](https://siljew.github.io/Portfolio/images/logo1.jpg)
 
 
 ## Description
