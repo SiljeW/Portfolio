@@ -4,105 +4,6 @@ window.addEventListener('load', () => {
     loader.style.display = 'none';
 });
 
-// Handle project navigation
-document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.myBtn');
-    
-    buttons.forEach(button => {
-      const modalId = button.getAttribute('data-modal');
-      let projectPath;
-      
-      // Set project paths based on modal ID
-      switch(modalId) {
-        case 'modal4':
-          projectPath = '/projects/bunchies.html';
-          break;
-        case 'modal1':
-          projectPath = '/projects/intarch.html';
-          break;
-        case 'modal2':
-          projectPath = '/projects/rainydays.html';
-          break;
-        case 'modal3':
-          projectPath = '/projects/csm.html';
-          break;
-        default:
-          projectPath = '#';
-      }
-      
-      // Replace button with anchor tag
-      const anchor = document.createElement('a');
-      anchor.href = projectPath;
-      anchor.className = 'myBtn';
-      anchor.textContent = 'Read more';
-      button.parentNode.replaceChild(anchor, button);
-    });
-
-    // Initialize text animation if animation container exists
-    initTextAnimation();
-});
-
-// Function to initialize the text animation
-function initTextAnimation() {
-    const animationContainer = document.querySelector('.animation-container');
-    if (!animationContainer) return; // Exit if container doesn't exist
-
-    // Create animation elements
-    const textAnimation = document.createElement('div');
-    textAnimation.className = 'text-animation';
-    
-    const firstText = document.createElement('span');
-    firstText.className = 'text first-text';
-    firstText.textContent = "I'm a ";
-    
-    const secondText = document.createElement('span');
-    secondText.className = 'text second-text';
-    
-    // Add skills/roles
-    const skills = ['UX Designer', 'UI Developer', 'Web Creator', 'Digital Artist'];
-    skills.forEach(skill => {
-        const wordSpan = document.createElement('span');
-        wordSpan.className = 'word';
-        wordSpan.textContent = skill;
-        secondText.appendChild(wordSpan);
-    });
-    
-    // Assemble the animation
-    textAnimation.appendChild(firstText);
-    textAnimation.appendChild(secondText);
-    animationContainer.appendChild(textAnimation);
-    
-    // Adjust the height of the container
-    setTimeout(() => {
-        const words = document.querySelectorAll('.word');
-        let maxHeight = 0;
-        
-        words.forEach(word => {
-            const height = word.offsetHeight;
-            if (height > maxHeight) {
-                maxHeight = height;
-            }
-        });
-        
-        if (maxHeight > 0) {
-            secondText.style.height = `${maxHeight}px`;
-        }
-    }, 100);
-}
-
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
 // Image Modal Functionality
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('imageModal');
@@ -219,7 +120,21 @@ document.querySelectorAll('.color-swatch').forEach(swatch => {
     });
 });
 
-// Add the following CSS classes to stylesheet for animations
+// Smooth scroll for navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Add the following CSS classes to your stylesheet for animations
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
     .fade-out {
@@ -257,69 +172,6 @@ styleSheet.textContent = `
         border-radius: 4px;
         font-size: 0.875rem;
         animation: fadeInOut 2s ease-in-out;
-    }
-
-    /* Text Animation Styles */
-    .animation-container {
-        height: 150px;
-        display: flex;
-        background-color: #FFFFFF;
-        align-items: center;
-        justify-content: center;
-        margin: 5rem 0;
-    }
-
-    .text-animation {
-        position: relative;
-        display: inline-flex;
-    }
-
-    .text-animation .text {
-        position: relative;
-        color: var(--primary-color, #333);
-        font-size: 2.5rem;
-        font-weight: 600;
-    }
-
-    .text-animation .second-text {
-        color: var(--accent-color, #7180b9);
-        position: relative;
-    }
-
-    .text-animation .second-text .word {
-        position: absolute;
-        opacity: 0;
-        overflow: hidden;
-        transform: translateY(10px);
-        animation: cycleWords 8s ease-in-out infinite;
-    }
-
-    .text-animation .second-text .word:nth-child(1) {
-        animation-delay: 0s;
-    }
-
-    .text-animation .second-text .word:nth-child(2) {
-        animation-delay: 2s;
-    }
-
-    .text-animation .second-text .word:nth-child(3) {
-        animation-delay: 4s;
-    }
-
-    .text-animation .second-text .word:nth-child(4) {
-        animation-delay: 6s;
-    }
-
-    .text-animation::after {
-        content: "";
-        position: absolute;
-        right: -4px;
-        top: 50%;
-        transform: translateY(-45%);
-        height: 30px;
-        width: 2px;
-        background-color: var(--accent-color, #7180b9);
-        animation: blink 0.7s infinite;
     }
 
     @keyframes slideUp {
@@ -360,37 +212,6 @@ styleSheet.textContent = `
         10% { opacity: 1; transform: translate(-50%, 0); }
         90% { opacity: 1; transform: translate(-50%, 0); }
         100% { opacity: 0; transform: translate(-50%, -10px); }
-    }
-
-    @keyframes cycleWords {
-        0%, 5% {
-            transform: translateY(10px);
-            opacity: 0;
-        }
-        10%, 20% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        25%, 30% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        35%, 40% {
-            transform: translateY(-10px);
-            opacity: 0;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-
-    @keyframes blink {
-        0%, 100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0;
-        }
     }
 `;
 
