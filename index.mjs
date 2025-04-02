@@ -4,7 +4,6 @@ window.addEventListener('load', () => {
     loader.style.display = 'none';
 });
 
-// Handle project navigation
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.myBtn');
     
@@ -12,33 +11,41 @@ document.addEventListener('DOMContentLoaded', () => {
       const modalId = button.getAttribute('data-modal');
       let projectPath;
       
-      // Set project paths based on modal ID
+      // Set project paths based on modal ID - using relative paths without leading slash
       switch(modalId) {
         case 'modal4':
-          projectPath = '/projects/bunchies.html';
+          projectPath = 'projects/bunchies.html';
           break;
         case 'modal1':
-          projectPath = '/projects/intarch.html';
+          projectPath = 'projects/intarch.html';
           break;
         case 'modal2':
-          projectPath = '/projects/rainydays.html';
+          projectPath = 'projects/rainydays.html';
           break;
         case 'modal3':
-          projectPath = '/projects/csm.html';
+          projectPath = 'projects/csm.html';
           break;
         default:
           projectPath = '#';
       }
       
-      // Replace button with anchor tag
+      // Replace button with anchor tag and ensure it works with deployment
       const anchor = document.createElement('a');
       anchor.href = projectPath;
       anchor.className = 'myBtn';
       anchor.textContent = 'Read more';
+      
+      // Add click event listener to handle navigation properly
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Use relative URL starting from the current location
+        window.location.href = projectPath;
+      });
+      
       button.parentNode.replaceChild(anchor, button);
     });
 
-    // Initialize text animation if animation container exists
+    // Rest of your initialization code...
     initTextAnimation();
 });
 
